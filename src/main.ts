@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { LoggerMiddleware } from './utils/logger.middleware';
 
 async function bootstrap() {
   const port = process.env.PORT ?? 3000
@@ -15,14 +14,13 @@ async function bootstrap() {
   }));
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('FXQL API')
+    .setDescription('An API for managing FXQL statements including source and destination currencies, buy and sell prices, and cap amounts.')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('FXQL')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory);
-
+  SwaggerModule.setup('docs', app, documentFactory);
 
   await app.listen(port);
   Logger.log(`Server has started in http://localhost:${port}`)

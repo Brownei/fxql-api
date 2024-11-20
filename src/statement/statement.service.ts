@@ -1,16 +1,12 @@
 import { ConflictException, HttpStatus, Injectable, Logger, NotAcceptableException } from '@nestjs/common';
 import { CreateStatementDto } from './dto/create-statement.dto';
-import { ValidateService } from 'src/utils/validate.service';
 import { DbService } from 'src/utils/db.service';
 import { convertToSpecificDataStructure } from 'src/lib';
 import { Statement } from '@prisma/client';
 
 @Injectable()
 export class StatementService {
-  constructor(
-    private readonly dbService: DbService,
-    private readonly validateService: ValidateService
-  ) { }
+  constructor(private readonly dbService: DbService) { }
 
   async createStatement(createStatementDto: CreateStatementDto) {
     Logger.log("Creating Statement......")
