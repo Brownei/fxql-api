@@ -4,6 +4,7 @@ import {
   ValidationArguments,
 } from 'class-validator';
 
+//This is used for validating the body from the request
 @ValidatorConstraint({ name: 'fxqlValidator', async: false })
 export class FxqlValidator implements ValidatorConstraintInterface {
   validate(fxql: string, args: ValidationArguments) {
