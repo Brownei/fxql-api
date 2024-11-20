@@ -13,7 +13,7 @@ import { FxqlValidator } from './validator/statement.validator';
     StatementModule,
     ThrottlerModule.forRoot([{
       ttl: 60000,
-      limit: 3,
+      limit: 10,
     }]),],
   controllers: [AppController],
   providers: [
