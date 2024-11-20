@@ -11,7 +11,8 @@ export class StatementService {
   async createStatement(createStatementDto: CreateStatementDto) {
     Logger.log("Creating Statement......")
     const statementsSet = new Set<Statement>()
-    const regex = /([A-Z]{3}-[A-Z]{3}) \{\n\s*BUY ([1-9]\d{0,2}(\.\d+)?)\n\s*SELL ([1-9]\d{0,2}(\.\d+)?)\n\s*CAP (0|[1-9]\d*)\n\}/g;
+    //const regex = /([A-Z]{3}-[A-Z]{3}) \{\n\s*BUY ([1-9]\d{0,2}(\.\d+)?)\n\s*SELL ([1-9]\d{0,2}(\.\d+)?)\n\s*CAP (0|[1-9]\d*)\n\}/g;
+    const regex = /([A-Z]{3}-[A-Z]{3}) \{\\n\s*BUY ([1-9]\d*(\.\d+)?)\\n\s*SELL ([1-9]\d*(\.\d+)?)\\n\s*CAP (0|[1-9]\d*)\\n\}/g;
     const statements = [];
     let statement: any;
 
